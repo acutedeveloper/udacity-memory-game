@@ -1,0 +1,17 @@
+// Add a css reset
+body{
+  background-color: red;
+  font-family: arial;
+}
+
+.div-block{
+
+  content: "eat my pooh bitch";
+
+  &__boobs {
+    display: grid;
+    transition: all .5s;
+    user-select: none;
+    background: linear-gradient(to bottom, white, black);
+  }
+}
