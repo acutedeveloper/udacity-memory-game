@@ -1,0 +1,10 @@
+/**
+ * @Component Name: Game Grid
+ * @Component Description: The main area that holds the memory cards
+ * @Author: NM Peters
+ */
+
+.game-grid{
+  display: flex;
+  flex-wrap: wrap;
+}

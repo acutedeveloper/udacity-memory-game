@@ -1,0 +1,17 @@
+/**
+ * @Component Name: Game Card
+ * @Component Description: The memory card for gameplay
+ * @Author: NM Peters
+ */
+
+.game-card{
+  background-color: red;
+  width: calc(25% - 20px);
+  margin: 10px;
+
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  position: relative; /* If you want text inside of it */
+
+  display: flex;
+  justify-content: center;
+}
