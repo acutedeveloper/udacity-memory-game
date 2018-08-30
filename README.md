@@ -19,9 +19,9 @@ In building my workflow I have compiled a list of all the dependencies that are 
 - normalize.css [X]
 
 **Production Optimisations**
-- gulp-concat (for JS)
-- gulp-minify
-- source maps for JS
+- gulp-concat (for JS) [ ]
+- gulp-minify [ ]
+- source maps for JS [ ]
 
 Modify the sass task to output a compressed file
 Use gulp Babel
