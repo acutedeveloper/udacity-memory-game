@@ -28,12 +28,32 @@ Use gulp Babel
 
 ## Tasks to complete project
 - Create copy tasks for fonts [ ]
-- Aspect Ratio for game cards [ ]
+- Aspect Ratio for game cards [x]
 
 ## Project Learnings
 **Browser Sync**
 For browser sync to reload after css has been updated it needs to be part of the
 sass pipe stream.
+
+**Aspect Ratio CSS**
+For perfect squares I have used a technique that achieves this.
+
+Container (to set width) > Inner Container (Set ratio. Relative Position) > Content Container (Absolute Position)
+
+**Event Listeners**
+To help improve performance, I have learned how to use a single event listener and then target the element needed to manipulate.
+
+```js
+
+var gameGrid = document.querySelector('.game-grid');
+
+gameGrid.addEventListener('click', function(event) {
+
+    event.target.closest(".game-card__content").classList.toggle('js__is-flipped');
+
+})
+
+```
 
 
 ## Wishlist
