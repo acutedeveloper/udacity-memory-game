@@ -30,6 +30,12 @@ Use gulp Babel
 - Create copy tasks for fonts [ ]
 - Aspect Ratio for game cards [x]
 
+## Project Progress
+** 4/9/18 **
+Added populate game board with JS.
+
+Next to add icons x2 to grid and shuffle.
+
 ## Project Learnings
 **Browser Sync**
 For browser sync to reload after css has been updated it needs to be part of the
@@ -40,7 +46,7 @@ For perfect squares I have used a technique that achieves this.
 
 Container (to set width) > Inner Container (Set ratio. Relative Position) > Content Container (Absolute Position)
 
-**Event Listeners**
+**Event Delegation**
 To help improve performance, I have learned how to use a single event listener and then target the element needed to manipulate.
 
 ```js

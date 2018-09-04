@@ -17,9 +17,10 @@ gulp.task('sass', function () {
 gulp.task('watch', function () {
 
   browserSync.init({
-        server: "./"
+        server: "./src/"
     });
 
   gulp.watch('./src/scss/**/*.scss', ['sass']);
   gulp.watch('./src/**.html').on('change', browserSync.reload);
+  gulp.watch('./src/js/**.js').on('change', browserSync.reload);
 });
