@@ -42,8 +42,17 @@ thinking about each reaction that I would encounter.
 While I have built out the logic, I can very clearly see that the code needs some organisation.
 
 Next Steps:
-* Need to organise code
-* Add some custom UI items
+* Stop user clicking card twice [ ]
+* Prevent Multiple clicks [ ]
+* Your user should see a modal when the game ends [ ]
+* Star Rating [ ]
+* Need to organise code [ ]
+
+Additional Styling:
+* Reset button [ ]
+* Star rating [ ]
+* Timer (how does setTimeout() come into play here?) [ ]
+* Move counter [ ]
 
 **4/9/18**
 Added populate game board with JS.
