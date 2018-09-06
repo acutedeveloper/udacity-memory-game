@@ -31,7 +31,21 @@ Use gulp Babel
 - Aspect Ratio for game cards [x]
 
 ## Project Progress
-** 4/9/18 **
+**6/9/18**
+I really got stuck into building out the logic of the game.
+
+Creating my own version of the logic was challlenging. Not sure that I have viable solution, but I wil compare with the Udemy Course Version.
+
+The process that really helped was to start with basically writing out the process as if I was the user,
+thinking about each reaction that I would encounter.
+
+While I have built out the logic, I can very clearly see that the code needs some organisation.
+
+Next Steps:
+* Need to organise code
+* Add some custom UI items
+
+**4/9/18**
 Added populate game board with JS.
 
 Next to add icons x2 to grid and shuffle.

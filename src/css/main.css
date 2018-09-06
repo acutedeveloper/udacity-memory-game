@@ -388,7 +388,12 @@ template {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  padding: 5px; }
+  @media screen and (min-width: 48em) {
+    .game-grid {
+      max-width: 48em;
+      margin: 0 auto; } }
 
 /**
  * @Component Name: Game Card
@@ -396,8 +401,8 @@ template {
  * @Author: NM Peters
  */
 .game-card {
-  width: calc(25% - 20px);
-  margin: 10px; }
+  width: calc(25% - 10px);
+  margin: 5px; }
   .game-card__inner {
     padding-top: 100%;
     /* 1:1 Aspect Ratio */
@@ -434,11 +439,10 @@ template {
       height: 100%;
       width: 100%;
       -webkit-backface-visibility: hidden;
-      backface-visibility: hidden; }
+      backface-visibility: hidden;
+      border-radius: 5px; }
     .game-card__content-back {
-      background-color: red;
-      -webkit-transform: rotateY(180deg);
-      transform: rotateY(180deg); }
+      background-color: red; }
     .game-card__content-front {
       background-color: green;
       display: -webkit-box;
@@ -449,10 +453,15 @@ template {
       justify-content: center;
       -webkit-box-align: center;
       -ms-flex-align: center;
-      align-items: center; }
-    .game-card__content.js__is-flipped {
+      align-items: center;
       -webkit-transform: rotateY(180deg);
       transform: rotateY(180deg); }
+    .game-card__content.js__is-flipped, .game-card__content.js__is-matched {
+      z-index: 100;
+      -webkit-transform: rotateY(180deg);
+      transform: rotateY(180deg); }
+    .game-card__content.js__is-matched .game-card__content-front {
+      background-color: blue; }
   .game-card i[class*='icon-'] {
     font-size: 2rem;
     color: white; }
