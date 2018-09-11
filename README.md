@@ -44,13 +44,12 @@ While I have built out the logic, I can very clearly see that the code needs som
 Next Steps:
 * Stop user clicking card twice [ ]
 * Prevent Multiple clicks [ ]
-* Your user should see a modal when the game ends [ ]
+* Your user should see a modal when the game ends [x]
 * Star Rating [ ]
 * Need to organise code [ ]
 
 Additional Styling:
 * Reset button [ ]
-* Star rating [ ]
 * Timer (how does setTimeout() come into play here?) [ ]
 * Move counter [ ]
 

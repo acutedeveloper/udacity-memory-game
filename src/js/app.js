@@ -126,7 +126,6 @@ var matchedPairs = [];
 
 gameGrid.addEventListener('click', function(event) {
 
-
   // Get the closest card content
   var currentCard = event.target.closest(".game-card__content");
 
@@ -161,11 +160,10 @@ gameGrid.addEventListener('click', function(event) {
 
   }
 
-  if(matchedPairs.length == 8){
+  if(matchedPairs.length === 8){
     // Celebrate in some fashion
-
+    celebrate();
   }
-
 
 });
 
@@ -194,5 +192,12 @@ function checkCards(cardIcon) {
     return false;
 
   }
+
+}
+
+function celebrate(){
+
+  const modal = document.querySelector(".game-modal");
+  modal.classList.toggle("js-active");
 
 }
