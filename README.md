@@ -31,10 +31,13 @@ Use gulp Babel
 - Aspect Ratio for game cards [x]
 
 ## Project Progress
+**12/9/18**
+Added checks to ensure that multiple clicks were not logged. And also fixed bug that allow users to match cards by double clicking on one card!
+
 **6/9/18**
 I really got stuck into building out the logic of the game.
 
-Creating my own version of the logic was challlenging. Not sure that I have viable solution, but I wil compare with the Udemy Course Version.
+Creating my own version of the logic was challlenging. Not sure that I have viable solution, but I will compare with the Udemy Course Version.
 
 The process that really helped was to start with basically writing out the process as if I was the user,
 thinking about each reaction that I would encounter.
@@ -42,16 +45,16 @@ thinking about each reaction that I would encounter.
 While I have built out the logic, I can very clearly see that the code needs some organisation.
 
 Next Steps:
-* Stop user clicking card twice [ ]
-* Prevent Multiple clicks [ ]
+* Stop user clicking card twice [x]
+* Prevent Multiple clicks [x]
 * Your user should see a modal when the game ends [x]
-* Star Rating [ ]
 * Need to organise code [ ]
 
 Additional Styling:
 * Reset button [ ]
-* Timer (how does setTimeout() come into play here?) [ ]
 * Move counter [ ]
+* Timer (how does setTimeout() come into play here?) [ ]
+* Star Rating [ ]
 
 **4/9/18**
 Added populate game board with JS.

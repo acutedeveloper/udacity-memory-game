@@ -88,6 +88,10 @@ for (var i = 0; i < 16; i++) {
   var gameCard = document.createElement('div');
   gameCard.className = "game-card";
 
+  var gameCardId = document.createAttribute("data-cardid");
+  gameCardId.value = i;
+  gameCard.setAttributeNode(gameCardId);
+
   var gameCardInner = document.createElement('div');
   gameCardInner.className = "game-card__inner";
 
@@ -124,53 +128,69 @@ gameGrid.appendChild(gameCardsFragment);
 var flippedCards = [];
 var matchedPairs = [];
 
-gameGrid.addEventListener('click', function(event) {
+gameGrid.addEventListener('click', playGame, true);
 
-  // Get the closest card content
-  var currentCard = event.target.closest(".game-card__content");
+function playGame(event) {
 
-  // Get the icon type of the card
-  var cardIcon = currentCard.getElementsByTagName("i")[0].className;
+        if(event.target.classList.contains("game-grid"))
+          return;
 
-  // Flip card
-  if(flippedCards.length < 2){
+        // Get the closest card content
+        var currentCard = event.target.closest(".game-card");
 
-    // Need to lock card when flipped until 2 cards are clicked
-    flippedCards.push(cardIcon);
-    currentCard.classList.toggle('js__is-flipped');
+        // Get the icon type of the card
+        var cardIcon = currentCard.getElementsByTagName("i")[0].className;
+        var cardId = currentCard.getAttribute("data-cardid");
 
-  }
+        console.log(cardIcon);
 
-  if(flippedCards.length === 2){
+        // Flip card
+        if(flippedCards.length < 2){
 
-    window.setTimeout(function() {
+          // Need to lock card when flipped until 2 cards are clicked
+          flippedCards.push({
+            cardIcon,
+            cardId
+          });
 
-      if (checkCards(cardIcon)){
-      var matchedCards = gameGrid.querySelectorAll(`.${cardIcon}`);
+          currentCard.querySelector(".game-card__content").classList.toggle('js__is-flipped');
 
-      matchedCards.forEach(function(match) {
-        var matchParent = match.closest(".game-card__content");
-        matchParent.classList.remove('js__is-flipped');
-        matchParent.classList.add('js__is-matched');
-      });
+        }
 
-    }
+        console.log(flippedCards.indexOf(cardIcon));
 
-    }, 500);
+        if(flippedCards.length === 2){
 
-  }
+          window.setTimeout(function() {
 
-  if(matchedPairs.length === 8){
-    // Celebrate in some fashion
-    celebrate();
-  }
+            if (checkCards(cardIcon)){
+            var matchedCards = gameGrid.querySelectorAll(`.${cardIcon}`);
 
-});
+            matchedCards.forEach(function(match) {
+              var matchParent = match.closest(".game-card__content");
+              matchParent.classList.remove('js__is-flipped');
+              matchParent.classList.add('js__is-matched');
+            });
+
+          }
+
+          if(matchedPairs.length === 8){
+          // Celebrate in some fashion
+          celebrate();
+        }
+
+          }, 500);
+
+        }
+
+}
 
 // When the card are flipped and matched they need to stay flipped. So add a new class for when they are matched
 function checkCards(cardIcon) {
 
-  if(flippedCards[0] === flippedCards[1]){
+  if(flippedCards.length === 2 && flippedCards[0].cardIcon === flippedCards[1].cardIcon && flippedCards[0].cardId !== flippedCards[1].cardId){
+
+    console.log('passed',flippedCards)
 
     flippedCards = [];
     matchedPairs.push(cardIcon);
@@ -178,16 +198,18 @@ function checkCards(cardIcon) {
     return true;
 
   } else {
+    console.log('failed',flippedCards.length)
 
     // remove class is-flipped from all.
     var selectedCards = gameGrid.querySelectorAll('.js__is-flipped');
 
     selectedCards.forEach(function (card) {
-      console.log(card);
+
       card.classList.remove('js__is-flipped');
-      flippedCards = [];
 
     })
+
+    flippedCards = [];
 
     return false;
 
