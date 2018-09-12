@@ -52,7 +52,7 @@ Next Steps:
 
 Additional Styling:
 * Reset button [ ]
-* Move counter [ ]
+* Move counter [x]
 * Timer (how does setTimeout() come into play here?) [ ]
 * Star Rating [ ]
 

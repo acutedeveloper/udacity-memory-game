@@ -22,25 +22,6 @@ We nedd a is not matched function
 
 var gameGrid = document.querySelector('.game-grid');
 
-var cardIcons = [
-  "icon-mic-outline",
-  "icon-camera-alt",
-  "icon-crown",
-  "icon-anchor",
-  "icon-graduation-cap",
-  "icon-paper-plane-empty",
-  "icon-diamond",
-  "icon-balance-scale",
-  "icon-mic-outline",
-  "icon-camera-alt",
-  "icon-crown",
-  "icon-anchor",
-  "icon-graduation-cap",
-  "icon-paper-plane-empty",
-  "icon-diamond",
-  "icon-balance-scale"
-];
-
 /*
 * Shuffle the icons
 */
@@ -122,12 +103,6 @@ for (var i = 0; i < 16; i++) {
 
 gameGrid.appendChild(gameCardsFragment);
 
-
-
-// Lets track how many cards are flipped
-var flippedCards = [];
-var matchedPairs = [];
-
 gameGrid.addEventListener('click', playGame, true);
 
 function playGame(event) {
@@ -182,6 +157,8 @@ function playGame(event) {
           }, 500);
 
         }
+
+        moveCounter.init(".game-moves");
 
 }
 
