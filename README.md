@@ -48,13 +48,25 @@ Next Steps:
 * Stop user clicking card twice [x]
 * Prevent Multiple clicks [x]
 * Your user should see a modal when the game ends [x]
-* Need to organise code [ ]
+* Need to organise code [x]
 
 Additional Styling:
-* Reset button [ ]
+* Reset button [x]
 * Move counter [x]
 * Timer (how does setTimeout() come into play here?) [ ]
 * Star Rating [ ]
+
+**13/9/18**
+
+As I progressed I could see that my code was becoming a little unmaintainable. So I pushed ahead to learn about object oriented javascript. I found a couple of resources that proved to be useful in helping build using a design pattern:
+
+https://css-tricks.com/how-do-you-structure-javascript-the-module-pattern-edition/
+
+This then lead onto understanding more the use of `this`. As I understand `this` it references the context of where it is being called.
+
+So you may think that you are referencing `this` inside of a object when using a builtin function, but rather it's referring to the Global Context.
+
+You can preseve the scoped context by using `let self = this;`.
 
 **4/9/18**
 Added populate game board with JS.

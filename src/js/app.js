@@ -1,202 +1,224 @@
-/*
-* The gameplay
+/* Setup Game Board */
 
-The idea is that when the use will flip a maximum of two cards
-The cards will then be checked if they match.
-If they do not match
-the cards will flip back over
-if they do match
-the cards will stay facing up and the user can then flip more cards
-the matching pair of cards are logged
+var gameBoard = {
 
-the user will then repeat the process
+  settings: {
+    gameGrid: '',
+    gameResetButton: '',
+    gameCardsFragment: '',
+    shuffledNumbers: gameData.shuffleNumbers()
+  },
 
-when the user has matched all 16 cards then the game has been won
+  // Initial function to call to setup the board
+  init: function() {
+      this.getDomElements();
+      this.bindUi();
+      this.buildBoard();
+  },
 
-----
-We need to log each pair that have been matched
-We need a is matched function
-We nedd a is not matched function
+  getDomElements: function() {
+    this.gameGrid = document.querySelector('.game-grid');
+    this.gameResetButton = document.querySelector('.js-game-reset');
+    this.gameCardsFragment = document.createDocumentFragment();
+  },
 
-*/
+  bindUi: function() {
+    this.gameGrid.addEventListener('click', function(){
+      gamePlay.init(event);
+    });
+    this.gameResetButton.addEventListener('click', function() {
+      gamePlay.resetGame();
+    });
+  },
 
-var gameGrid = document.querySelector('.game-grid');
+  buildBoard: function() {
 
-/*
-* Shuffle the icons
-*/
+    for (var i = 0; i < 16; i++) {
 
-var numberArray = [];
+      this.createCard(i);
 
-function shuffleNumbers(numberArray) {
+    }
 
-  if (numberArray.length === 16)
-    return numberArray;
+    this.gameGrid.appendChild(this.gameCardsFragment);
+  },
 
-  var funcNumArray = numberArray;
-  var number = getRandomInt(16);
+  createCard: function(i) {
+    var gameCard = document.createElement('div');
+    gameCard.className = "game-card";
 
-  if (funcNumArray.indexOf(number) === -1) {
+    var gameCardId = document.createAttribute("data-cardid");
+    gameCardId.value = i;
+    gameCard.setAttributeNode(gameCardId);
 
-    funcNumArray.push(number);
-    shuffleNumbers(funcNumArray);
+    var gameCardInner = document.createElement('div');
+    gameCardInner.className = "game-card__inner";
 
-  } else {
+    var gameCardContent = document.createElement('div');
+    gameCardContent.className = "game-card__content";
 
-    shuffleNumbers(funcNumArray);
+    var gameCardContentFront = document.createElement('div');
+    gameCardContentFront.className = "game-card__content-front";
 
-  }
+    var gameCardContentBack = document.createElement('div');
+    gameCardContentBack.className = "game-card__content-back";
 
-  return funcNumArray;
+    var gameIcon = document.createElement('i');
+    gameIcon.className = gameData.icons[this.settings.shuffledNumbers[i]];
 
-}
+    gameCardContentFront.appendChild(gameIcon);
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
+    gameCardContent.appendChild(gameCardContentBack);
+    gameCardContent.appendChild(gameCardContentFront);
 
-var shuffledNumbers = shuffleNumbers(numberArray);
+    gameCardInner.appendChild(gameCardContent);
 
+    gameCard.appendChild(gameCardInner);
 
-/*
-* Setup the gameboard
-*/
+    this.gameCardsFragment.appendChild(gameCard);
 
-var gameCardsFragment = document.createDocumentFragment();
-
-for (var i = 0; i < 16; i++) {
-
-  var gameCard = document.createElement('div');
-  gameCard.className = "game-card";
-
-  var gameCardId = document.createAttribute("data-cardid");
-  gameCardId.value = i;
-  gameCard.setAttributeNode(gameCardId);
-
-  var gameCardInner = document.createElement('div');
-  gameCardInner.className = "game-card__inner";
-
-  var gameCardContent = document.createElement('div');
-  gameCardContent.className = "game-card__content";
-
-  var gameCardContentFront = document.createElement('div');
-  gameCardContentFront.className = "game-card__content-front";
-
-  var gameCardContentBack = document.createElement('div');
-  gameCardContentBack.className = "game-card__content-back";
-
-  var gameIcon = document.createElement('i');
-  gameIcon.className = cardIcons[shuffledNumbers[i]];
-
-  gameCardContentFront.appendChild(gameIcon);
-
-  gameCardContent.appendChild(gameCardContentBack);
-  gameCardContent.appendChild(gameCardContentFront);
-
-  gameCardInner.appendChild(gameCardContent);
-
-  gameCard.appendChild(gameCardInner);
-
-  gameCardsFragment.appendChild(gameCard);
+  },
 
 }
 
-gameGrid.appendChild(gameCardsFragment);
 
-gameGrid.addEventListener('click', playGame, true);
+/* Handles user interactions */
 
-function playGame(event) {
+var gamePlay = {
 
-        if(event.target.classList.contains("game-grid"))
-          return;
+  settings: {
+    currentCard: '',
+    cardIcon: '',
+    cardId: '',
+  },
 
-        // Get the closest card content
-        var currentCard = event.target.closest(".game-card");
+  init: function(event) {
 
-        // Get the icon type of the card
-        var cardIcon = currentCard.getElementsByTagName("i")[0].className;
-        var cardId = currentCard.getAttribute("data-cardid");
+    // We only want to log clicks from game-cards
+    if(event.target.classList.contains("game-grid"))
+      return false;
 
-        console.log(cardIcon);
+      this.getCardElements();
+      this.flipCard();
+      this.gameStatus();
+      moveCounter.init(".game-moves__counter");
 
-        // Flip card
-        if(flippedCards.length < 2){
+  },
 
-          // Need to lock card when flipped until 2 cards are clicked
-          flippedCards.push({
-            cardIcon,
-            cardId
+  getCardElements: function() {
+
+    this.settings.currentCard = event.target.closest(".game-card");
+    this.settings.cardIcon = this.settings.currentCard.getElementsByTagName("i")[0].className;
+    this.settings.cardId = this.settings.currentCard.getAttribute("data-cardid");
+
+  },
+
+  flipCard: function() {
+
+    if(gameData.flippedCards.length < 2){
+
+      // Need to lock card when flipped until 2 cards are clicked
+      gameData.flippedCards.push({
+        cardIcon: this.settings.cardIcon,
+        cardId: this.settings.cardId
+      });
+
+      this.settings.currentCard.querySelector(".game-card__content").classList.toggle('js__is-flipped');
+
+    }
+
+  },
+
+  gameStatus: function() {
+
+    if(gameData.flippedCards.length === 2){
+
+      // Capture the value of THIS objects context
+      var self = this;
+
+      window.setTimeout(function() {
+      // inside here its a global context
+
+        // We can then run THIS checkCards
+        if(self.checkCards()) {
+
+          var matchedCards = gameBoard.gameGrid.querySelectorAll(`.${self.settings.cardIcon}`);
+
+          matchedCards.forEach(function(match) {
+            var matchParent = match.closest(".game-card__content");
+            matchParent.classList.remove('js__is-flipped');
+            matchParent.classList.add('js__is-matched');
           });
 
-          currentCard.querySelector(".game-card__content").classList.toggle('js__is-flipped');
-
         }
 
-        console.log(flippedCards.indexOf(cardIcon));
-
-        if(flippedCards.length === 2){
-
-          window.setTimeout(function() {
-
-            if (checkCards(cardIcon)){
-            var matchedCards = gameGrid.querySelectorAll(`.${cardIcon}`);
-
-            matchedCards.forEach(function(match) {
-              var matchParent = match.closest(".game-card__content");
-              matchParent.classList.remove('js__is-flipped');
-              matchParent.classList.add('js__is-matched');
-            });
-
-          }
-
-          if(matchedPairs.length === 8){
+        if(gameData.matchedPairs.length === 8){
           // Celebrate in some fashion
-          celebrate();
+          self.celebrate();
         }
 
-          }, 500);
+      }, 500);
 
-        }
+    }
 
-        moveCounter.init(".game-moves");
+  },
 
-}
+  checkCards: function() {
 
-// When the card are flipped and matched they need to stay flipped. So add a new class for when they are matched
-function checkCards(cardIcon) {
 
-  if(flippedCards.length === 2 && flippedCards[0].cardIcon === flippedCards[1].cardIcon && flippedCards[0].cardId !== flippedCards[1].cardId){
+    if(gameData.flippedCards.length === 2 && gameData.flippedCards[0].cardIcon === gameData.flippedCards[1].cardIcon && gameData.flippedCards[0].cardId !== gameData.flippedCards[1].cardId){
 
-    console.log('passed',flippedCards)
+      gameData.flippedCards = [];
+      gameData.matchedPairs.push(this.cardIcon);
 
-    flippedCards = [];
-    matchedPairs.push(cardIcon);
+      return true;
 
-    return true;
+    } else {
 
-  } else {
-    console.log('failed',flippedCards.length)
+      // remove class is-flipped from all.
+      var selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped');
+
+      selectedCards.forEach(function (card) {
+
+        card.classList.remove('js__is-flipped');
+
+      });
+
+      gameData.flippedCards = [];
+
+      return false;
+
+    }
+
+  },
+
+  resetGame: function() {
+
+    this.resetCards();
+    moveCounter.resetMoves();
+
+  },
+
+  celebrate: function() {
+
+    const modal = document.querySelector(".game-modal");
+    modal.classList.toggle("js-active");
+
+  },
+
+  resetCards: function() {
 
     // remove class is-flipped from all.
-    var selectedCards = gameGrid.querySelectorAll('.js__is-flipped');
+    var selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped, .js__is-matched');
 
     selectedCards.forEach(function (card) {
 
-      card.classList.remove('js__is-flipped');
+      card.classList.remove('js__is-flipped', 'js__is-matched');
 
-    })
+    });
 
-    flippedCards = [];
-
-    return false;
+    gameData.flippedCards = [];
 
   }
-
 }
 
-function celebrate(){
-
-  const modal = document.querySelector(".game-modal");
-  modal.classList.toggle("js-active");
-
-}
+gameBoard.init();
