@@ -31,6 +31,19 @@ Use gulp Babel
 - Aspect Ratio for game cards [x]
 
 ## Project Progress
+
+**13/9/18**
+
+As I progressed I could see that my code was becoming a little unmaintainable. So I pushed ahead to learn about object oriented javascript. I found a couple of resources that proved to be useful in helping build using a design pattern:
+
+https://css-tricks.com/how-do-you-structure-javascript-the-module-pattern-edition/
+
+This then lead onto understanding more the use of `this`. As I understand `this` it references the context of where it is being called.
+
+So you may think that you are referencing `this` inside of a object when using a builtin function, but rather it's referring to the Global Context.
+
+You can preseve the scoped context by using `let self = this;`.
+
 **12/9/18**
 Added checks to ensure that multiple clicks were not logged. And also fixed bug that allow users to match cards by double clicking on one card!
 
@@ -55,18 +68,6 @@ Additional Styling:
 * Move counter [x]
 * Timer (how does setTimeout() come into play here?) [ ]
 * Star Rating [ ]
-
-**13/9/18**
-
-As I progressed I could see that my code was becoming a little unmaintainable. So I pushed ahead to learn about object oriented javascript. I found a couple of resources that proved to be useful in helping build using a design pattern:
-
-https://css-tricks.com/how-do-you-structure-javascript-the-module-pattern-edition/
-
-This then lead onto understanding more the use of `this`. As I understand `this` it references the context of where it is being called.
-
-So you may think that you are referencing `this` inside of a object when using a builtin function, but rather it's referring to the Global Context.
-
-You can preseve the scoped context by using `let self = this;`.
 
 **4/9/18**
 Added populate game board with JS.
