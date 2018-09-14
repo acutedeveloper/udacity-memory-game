@@ -18,9 +18,17 @@ var gameData = {
     "icon-diamond",
     "icon-balance-scale"
   ],
+  
   flippedCards: [],
   matchedPairs: [],
   numberArray: [],
+
+  resetData: function () {
+    this.flippedCards = [];
+    this.matchedPairs = [];
+    this.numberArray = [];
+  },
+
   shuffleNumbers: function () {
 
     if (this.numberArray.length === 16)

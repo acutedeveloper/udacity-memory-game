@@ -499,10 +499,11 @@ template {
     padding: 10px;
     border-radius: 5px;
     background: white; }
-  .game-modal__button {
-    background-color: blue;
-    color: white;
-    padding: 10px;
-    display: block;
-    border-style: none;
-    border-radius: 3px; }
+
+.game-button {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  display: block;
+  border-style: none;
+  border-radius: 3px; }

@@ -11,9 +11,9 @@ var gameBoard = {
 
   // Initial function to call to setup the board
   init: function() {
-      this.getDomElements();
-      this.bindUi();
-      this.buildBoard();
+    this.getDomElements();
+    this.bindUi();
+    this.buildBoard();
   },
 
   getDomElements: function() {
@@ -23,10 +23,10 @@ var gameBoard = {
   },
 
   bindUi: function() {
-    this.gameGrid.addEventListener('click', function(){
+    this.gameGrid.addEventListener('click', function() {
       gamePlay.init(event);
     });
-    this.gameResetButton.addEventListener('click', function() {
+    document.addEventListener('click', function() {
       gamePlay.resetGame();
     });
   },
@@ -61,6 +61,7 @@ var gameBoard = {
 
     var gameCardContentBack = document.createElement('div');
     gameCardContentBack.className = "game-card__content-back";
+    gameCardContentBack.innerText = gameData.icons[this.settings.shuffledNumbers[i]];
 
     var gameIcon = document.createElement('i');
     gameIcon.className = gameData.icons[this.settings.shuffledNumbers[i]];
@@ -89,22 +90,23 @@ var gamePlay = {
     currentCard: '',
     cardIcon: '',
     cardId: '',
+    modal: ''
   },
 
   init: function(event) {
 
     // We only want to log clicks from game-cards
-    if(event.target.classList.contains("game-grid"))
+    if (event.target.classList.contains("game-grid"))
       return false;
 
-      this.getCardElements();
-      this.flipCard();
-      this.gameStatus();
-      moveCounter.init(".game-moves__counter");
+    this.getDomElements();
+    this.flipCard();
+    this.gameStatus();
+    moveCounter.init(".game-moves__counter");
 
   },
 
-  getCardElements: function() {
+  getDomElements: function() {
 
     this.settings.currentCard = event.target.closest(".game-card");
     this.settings.cardIcon = this.settings.currentCard.getElementsByTagName("i")[0].className;
@@ -114,7 +116,7 @@ var gamePlay = {
 
   flipCard: function() {
 
-    if(gameData.flippedCards.length < 2){
+    if (gameData.flippedCards.length < 2) {
 
       // Need to lock card when flipped until 2 cards are clicked
       gameData.flippedCards.push({
@@ -130,16 +132,16 @@ var gamePlay = {
 
   gameStatus: function() {
 
-    if(gameData.flippedCards.length === 2){
+    if (gameData.flippedCards.length === 2) {
 
       // Capture the value of THIS objects context
       var self = this;
 
       window.setTimeout(function() {
-      // inside here its a global context
+        // inside here its a global context
 
         // We can then run THIS checkCards
-        if(self.checkCards()) {
+        if (self.checkCards()) {
 
           var matchedCards = gameBoard.gameGrid.querySelectorAll(`.${self.settings.cardIcon}`);
 
@@ -151,7 +153,7 @@ var gamePlay = {
 
         }
 
-        if(gameData.matchedPairs.length === 8){
+        if (gameData.matchedPairs.length === 8) {
           // Celebrate in some fashion
           self.celebrate();
         }
@@ -165,10 +167,10 @@ var gamePlay = {
   checkCards: function() {
 
 
-    if(gameData.flippedCards.length === 2 && gameData.flippedCards[0].cardIcon === gameData.flippedCards[1].cardIcon && gameData.flippedCards[0].cardId !== gameData.flippedCards[1].cardId){
+    if (gameData.flippedCards.length === 2 && gameData.flippedCards[0].cardIcon === gameData.flippedCards[1].cardIcon && gameData.flippedCards[0].cardId !== gameData.flippedCards[1].cardId) {
 
       gameData.flippedCards = [];
-      gameData.matchedPairs.push(this.cardIcon);
+      gameData.matchedPairs.push(this.settings.cardIcon);
 
       return true;
 
@@ -177,7 +179,7 @@ var gamePlay = {
       // remove class is-flipped from all.
       var selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped');
 
-      selectedCards.forEach(function (card) {
+      selectedCards.forEach(function(card) {
 
         card.classList.remove('js__is-flipped');
 
@@ -193,8 +195,23 @@ var gamePlay = {
 
   resetGame: function() {
 
+    if (event.target.classList.contains('js__game-reset')) {
+
+
+    const modal = document.querySelector(".game-modal");
+
     this.resetCards();
+
     moveCounter.resetMoves();
+    gameData.resetData();
+
+    if(modal.classList.contains("js-active")){
+      // Capture the current state of the modal
+
+      this.celebrate();
+    }
+
+  }
 
   },
 
@@ -207,16 +224,16 @@ var gamePlay = {
 
   resetCards: function() {
 
-    // remove class is-flipped from all.
-    var selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped, .js__is-matched');
+      // remove class is-flipped from all.
+      var selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped, .js__is-matched');
 
-    selectedCards.forEach(function (card) {
+      selectedCards.forEach(function(card) {
 
-      card.classList.remove('js__is-flipped', 'js__is-matched');
+        card.classList.remove('js__is-flipped', 'js__is-matched');
 
-    });
+      });
 
-    gameData.flippedCards = [];
+      gameData.flippedCards = [];
 
   }
 }
