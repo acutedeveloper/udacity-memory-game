@@ -10,7 +10,7 @@ In building my workflow I have compiled a list of all the dependencies that are 
 **Global dependencies**
 - gulp [x]
 - sass [x]
-- eslint [ ]
+- eslint [x]
 
 **Development Dependencies**
 - gulp-sass [x]
@@ -19,7 +19,7 @@ In building my workflow I have compiled a list of all the dependencies that are 
 - normalize.css [X]
 
 **Production Optimisations**
-- gulp-concat (for JS) [ ]
+- gulp-concat (for JS) [x]
 - gulp-minify [ ]
 - source maps for JS [ ]
 
@@ -27,13 +27,15 @@ Modify the sass task to output a compressed file
 Use gulp Babel
 
 ## Tasks to complete project
-- Create copy tasks for fonts [ ]
+- Create copy tasks for fonts [x]
 - Aspect Ratio for game cards [x]
 
 ## Project Progress
 
-**13/9/18**
+**16/9/18**
+I have added in new tasks for linting the JS and copying all files to a build folder. JS has been broken up into separate modules which are then compiled into one file.
 
+**13/9/18**
 As I progressed I could see that my code was becoming a little unmaintainable. So I pushed ahead to learn about object oriented javascript. I found a couple of resources that proved to be useful in helping build using a design pattern:
 
 https://css-tricks.com/how-do-you-structure-javascript-the-module-pattern-edition/
