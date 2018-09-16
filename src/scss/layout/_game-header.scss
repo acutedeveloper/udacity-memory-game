@@ -1,5 +1,18 @@
-.game-header{
-  background-color: red;
-  color: white;
+.game-header {
+  background-color: $theme-dk-grey;
+  color: $white;
   padding: 10px;
+  margin-bottom: 20px;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 39em;
+    margin: 0 auto;
+  }
+
+  &__title {
+      font-size: 1em;
+  }
 }

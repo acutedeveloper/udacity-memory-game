@@ -37,14 +37,15 @@
       width: 100%;
       backface-visibility: hidden;
       border-radius: 5px;
+      color: $white;
     }
 
     &-back {
-      background-color: red;
+      background-color: $theme-dk-grey;
     }
 
     &-front {
-      background-color: green;
+      background-color: $theme-pink;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -57,14 +58,14 @@
     }
     &.js__is-matched {
       .game-card__content-front{
-        background-color: blue;
+        background-color: $theme-green;
       }
     }
   }
 
   i[class*='icon-'] {
     font-size: 2rem;
-    color: white;
+    color: $white;
 
     &:before {
       vertical-align: middle;

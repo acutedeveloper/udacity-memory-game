@@ -4,33 +4,44 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Udacity Memeory Game</title>
+    <title>Udacity Memory Game</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
 
     <div class="wrapper">
-        <!-- Main Grid -->
+
+        <!-- Game Header -->
         <div class="game-header">
             <div class="game-header__inner">
-                <div class="game-moves">Total Moves:
-                    <span class="game-moves__counter">0</span>
-                </div>
+                <h1 class="game-header__title">Forget Me Not :D</h1>
+                <button class="game-button js__game-reset">Reset Game</button>
             </div>
         </div>
-        <div class="game-grid"></div>
-        <button class="game-button js__game-reset">Reset Game</button>
 
+        <!-- Main Playing Area -->
+        <div class="game-grid">
+            <div class="game-grid__inner"></div>
+        </div>
+        <div class="game-moves">Total Moves:
+            <span class="game-moves__counter">0</span>
+        </div>
+
+        <!-- Footer -->
+        <div class="game-footer">
+            <p>Made with love for CC <i class="icon-heart"></i></p>
+        </div>
     </div>
 
     <div class="game-modal">
         <div class="game-modal__content">
-            <h2>You have finished the game</h2>
-            <p>Arent you a clever person hmmm</p>
+            <h2 class="game-modal__content-heading">You have finished the game</h2>
+            <p>Arent you a clever person ^_^</p>
             <button class="game-button js__game-reset" data-reset="reset-game-end">Play Again</button>
         </div>
     </div>
+
     <script src="./js/game-data.js" charset="utf-8"></script>
     <script src="./js/app.js" charset="utf-8"></script>
 

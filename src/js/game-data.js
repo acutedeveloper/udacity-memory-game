@@ -1,4 +1,8 @@
+/*
+Any data information required for game setup and gamePlay
+*/
 
+// Game Data to help track different stats withing the game
 var gameData = {
   icons: [
     "icon-mic-outline",
@@ -18,24 +22,28 @@ var gameData = {
     "icon-diamond",
     "icon-balance-scale"
   ],
-  
+
   flippedCards: [],
   matchedPairs: [],
   numberArray: [],
 
+  // Reset the arrays used for gameplay
   resetData: function () {
     this.flippedCards = [];
     this.matchedPairs = [];
     this.numberArray = [];
   },
 
+  // Return shuffled numbers for placing the icons
   shuffleNumbers: function () {
 
-    if (this.numberArray.length === 16)
+    const noOfIcons = this.icons.length;
+
+    if (this.numberArray.length === noOfIcons)
       return this.numberArray;
 
-    var funcNumArray = this.numberArray;
-    var number = this.getRandomInt(16);
+    const funcNumArray = this.numberArray;
+    const number = this.getRandomInt(noOfIcons);
 
     if (funcNumArray.indexOf(number) === -1) {
 
@@ -52,6 +60,7 @@ var gameData = {
 
   },
 
+  // Return a random number
   getRandomInt: function (max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
@@ -81,7 +90,7 @@ var moveCounter = {
   displayMovesCount: function() {
 
     if(this.counterElement !== ""){
-      var counterElm = document.querySelector(this.counterElement);
+      const counterElm = document.querySelector(this.counterElement);
       counterElm.innerText = this.moves;
     } else {
       console.log("No counter Element Selected");

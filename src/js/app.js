@@ -17,7 +17,7 @@ var gameBoard = {
   },
 
   getDomElements: function() {
-    this.gameGrid = document.querySelector('.game-grid');
+    this.gameGrid = document.querySelector('.game-grid__inner');
     this.gameResetButton = document.querySelector('.js-game-reset');
     this.gameCardsFragment = document.createDocumentFragment();
   },
@@ -61,7 +61,9 @@ var gameBoard = {
 
     var gameCardContentBack = document.createElement('div');
     gameCardContentBack.className = "game-card__content-back";
-    gameCardContentBack.innerText = gameData.icons[this.settings.shuffledNumbers[i]];
+
+    // For Debugging Purposes ;)
+    //gameCardContentBack.innerText = gameData.icons[this.settings.shuffledNumbers[i]];
 
     var gameIcon = document.createElement('i');
     gameIcon.className = gameData.icons[this.settings.shuffledNumbers[i]];
@@ -80,7 +82,6 @@ var gameBoard = {
   },
 
 }
-
 
 /* Handles user interactions */
 
@@ -198,21 +199,20 @@ var gamePlay = {
     if (event.target.classList.contains('js__game-reset')) {
 
 
-    const modal = document.querySelector(".game-modal");
+      const modal = document.querySelector(".game-modal");
 
-    this.resetCards();
+      this.resetCards();
 
-    moveCounter.resetMoves();
-    gameData.resetData();
+      moveCounter.resetMoves();
+      gameData.resetData();
 
-    if(modal.classList.contains("js-active")){
-      // Capture the current state of the modal
+      if (modal.classList.contains("js-active")) {
+        // Capture the current state of the modal
 
-      this.celebrate();
+        this.celebrate();
+      }
+
     }
-
-  }
-
   },
 
   celebrate: function() {
@@ -224,16 +224,16 @@ var gamePlay = {
 
   resetCards: function() {
 
-      // remove class is-flipped from all.
-      var selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped, .js__is-matched');
+    // remove class is-flipped from all.
+    var selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped, .js__is-matched');
 
-      selectedCards.forEach(function(card) {
+    selectedCards.forEach(function(card) {
 
-        card.classList.remove('js__is-flipped', 'js__is-matched');
+      card.classList.remove('js__is-flipped', 'js__is-matched');
 
-      });
+    });
 
-      gameData.flippedCards = [];
+    gameData.flippedCards = [];
 
   }
 }

@@ -1,4 +1,6 @@
 @charset "UTF-8";
+/* General Colors */
+/* Theme Colors */
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -305,8 +307,8 @@ template {
 
 @font-face {
   font-family: 'fontello';
-  src: url("/fonts/fontello/fontello.eot?95555411");
-  src: url("/fonts/fontello/fontello.eot?95555411#iefix") format("embedded-opentype"), url("/fonts/fontello/fontello.woff2?95555411") format("woff2"), url("/fonts/fontello/fontello.woff?95555411") format("woff"), url("/fonts/fontello/fontello.ttf?95555411") format("truetype"), url("/fonts/fontello/fontello.svg?95555411#fontello") format("svg");
+  src: url("/fonts/fontello/fontello.eot?60016574");
+  src: url("/fonts/fontello/fontello.eot?60016574#iefix") format("embedded-opentype"), url("/fonts/fontello/fontello.woff2?60016574") format("woff2"), url("/fonts/fontello/fontello.woff?60016574") format("woff"), url("/fonts/fontello/fontello.ttf?60016574") format("truetype"), url("/fonts/fontello/fontello.svg?60016574#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -316,7 +318,7 @@ template {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('/fonts/fontello/fontello.svg?95555411#fontello') format('svg');
+    src: url('/fonts/fontello/fontello.svg?60016574#fontello') format('svg');
   }
 }
 */
@@ -351,6 +353,10 @@ template {
   content: '\e800'; }
 
 /* '' */
+.icon-heart:before {
+  content: '\e801'; }
+
+/* '' */
 .icon-camera-alt:before {
   content: '\e802'; }
 
@@ -379,10 +385,45 @@ template {
   content: '\f24e'; }
 
 /* '' */
+body {
+  background-color: #EBE8E1;
+  font-family: arial; }
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 100%; }
+
 .game-header {
-  background-color: red;
-  color: white;
-  padding: 10px; }
+  background-color: #232323;
+  color: #FFF;
+  padding: 10px;
+  margin-bottom: 20px; }
+  .game-header__inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    max-width: 39em;
+    margin: 0 auto; }
+  .game-header__title {
+    font-size: 1em; }
 
 /**
  * @Component Name: Game Grid
@@ -390,16 +431,24 @@ template {
  * @Author: NM Peters
  */
 .game-grid {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  padding: 5px; }
-  @media screen and (min-width: 48em) {
-    .game-grid {
-      max-width: 48em;
-      margin: 0 auto; } }
+  max-width: 100%; }
+  .game-grid__inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 5px;
+    max-width: 39em;
+    margin: 0 auto;
+    margin-bottom: 20px; }
+
+.game-footer {
+  text-align: center;
+  border-top: 1px #232323 solid;
+  margin-top: auto; }
+  .game-footer i[class*='icon-'] {
+    color: #E76E66; }
 
 /**
  * @Component Name: Game Card
@@ -446,11 +495,12 @@ template {
       width: 100%;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-      border-radius: 5px; }
+      border-radius: 5px;
+      color: #FFF; }
     .game-card__content-back {
-      background-color: red; }
+      background-color: #232323; }
     .game-card__content-front {
-      background-color: green;
+      background-color: #E76E66;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -467,10 +517,10 @@ template {
       -webkit-transform: rotateY(180deg);
       transform: rotateY(180deg); }
     .game-card__content.js__is-matched .game-card__content-front {
-      background-color: blue; }
+      background-color: #1B7D5A; }
   .game-card i[class*='icon-'] {
     font-size: 2rem;
-    color: white; }
+    color: #FFF; }
     .game-card i[class*='icon-']:before {
       vertical-align: middle; }
 
@@ -499,11 +549,21 @@ template {
     padding: 10px;
     border-radius: 5px;
     background: white; }
+    .game-modal__content-heading {
+      margin-top: 0; }
 
 .game-button {
-  background-color: blue;
-  color: white;
+  background-color: #589AAA;
+  color: #FFF;
   padding: 10px;
   display: block;
   border-style: none;
   border-radius: 3px; }
+
+.game-moves {
+  margin: 0 auto;
+  margin-bottom: 30px;
+  text-align: center;
+  max-width: calc(39em - 30px);
+  padding: 10px;
+  border-radius: 5px; }

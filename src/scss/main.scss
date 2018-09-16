@@ -1,12 +1,18 @@
+// Helpers
+@import "helpers/variables";
+
 // Normalise Css reset
 @import "vendors/normalize";
 
 // Fonts
 @import "vendors/fontello";
 
+@import "layout/game-layout";
 @import "layout/game-header";
 @import "layout/game-grid";
+@import "layout/game-footer";
 
 @import "components/game-card";
 @import "components/game-modal";
 @import "components/game-button";
+@import "components/game-moves";
