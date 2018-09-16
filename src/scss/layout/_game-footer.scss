@@ -1,8 +1,15 @@
+/**
+ * @Component Name: Game Footer
+ * @Component Description:
+ * @Author: NM Peters
+ */
+
 .game-footer {
   text-align: center;
   border-top: 1px $theme-dk-grey solid;
   margin-top: auto;
-  
+  font-family: 'Pacifico', cursive;
+
   i[class*='icon-'] {
     color: $theme-pink;
   }

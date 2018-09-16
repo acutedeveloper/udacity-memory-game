@@ -3,7 +3,7 @@ Any data information required for game setup and gamePlay
 */
 
 // Game Data to help track different stats withing the game
-var gameData = {
+const gameData = {
   icons: [
     "icon-mic-outline",
     "icon-camera-alt",
@@ -67,7 +67,7 @@ var gameData = {
 
 }
 
-var moveCounter = {
+const moveCounter = {
 
   counterElement: "",
   moves: 0,
@@ -101,7 +101,7 @@ var moveCounter = {
 
 /* Setup Game Board */
 
-var gameBoard = {
+const gameBoard = {
 
   settings: {
     gameGrid: '',
@@ -109,7 +109,7 @@ var gameBoard = {
     gameCardsFragment: '',
     shuffledNumbers: gameData.shuffleNumbers()
   },
-  
+
 
   // Initial function to call to setup the board
   init: function() {
@@ -135,7 +135,7 @@ var gameBoard = {
 
   buildBoard: function() {
 
-    for (var i = 0; i < 16; i++) {
+    for (let i = 0; i < 16; i++) {
 
       this.createCard(i);
 
@@ -145,29 +145,29 @@ var gameBoard = {
   },
 
   createCard: function(i) {
-    var gameCard = document.createElement('div');
+    const gameCard = document.createElement('div');
     gameCard.className = "game-card";
 
-    var gameCardId = document.createAttribute("data-cardid");
+    const gameCardId = document.createAttribute("data-cardid");
     gameCardId.value = i;
     gameCard.setAttributeNode(gameCardId);
 
-    var gameCardInner = document.createElement('div');
+    const gameCardInner = document.createElement('div');
     gameCardInner.className = "game-card__inner";
 
-    var gameCardContent = document.createElement('div');
+    const gameCardContent = document.createElement('div');
     gameCardContent.className = "game-card__content";
 
-    var gameCardContentFront = document.createElement('div');
+    const gameCardContentFront = document.createElement('div');
     gameCardContentFront.className = "game-card__content-front";
 
-    var gameCardContentBack = document.createElement('div');
+    const gameCardContentBack = document.createElement('div');
     gameCardContentBack.className = "game-card__content-back";
 
     // For Debugging Purposes ;)
     //gameCardContentBack.innerText = gameData.icons[this.settings.shuffledNumbers[i]];
 
-    var gameIcon = document.createElement('i');
+    const gameIcon = document.createElement('i');
     gameIcon.className = gameData.icons[this.settings.shuffledNumbers[i]];
 
     gameCardContentFront.appendChild(gameIcon);
@@ -187,7 +187,7 @@ var gameBoard = {
 
 /* Handles user interactions */
 
-var gamePlay = {
+const gamePlay = {
 
   settings: {
     currentCard: '',
@@ -238,7 +238,7 @@ var gamePlay = {
     if (gameData.flippedCards.length === 2) {
 
       // Capture the value of THIS objects context
-      var self = this;
+      const self = this;
 
       window.setTimeout(function() {
         // inside here its a global context
@@ -246,10 +246,10 @@ var gamePlay = {
         // We can then run THIS checkCards
         if (self.checkCards()) {
 
-          var matchedCards = gameBoard.gameGrid.querySelectorAll(`.${self.settings.cardIcon}`);
+          const matchedCards = gameBoard.gameGrid.querySelectorAll(`.${self.settings.cardIcon}`);
 
           matchedCards.forEach(function(match) {
-            var matchParent = match.closest(".game-card__content");
+            const matchParent = match.closest(".game-card__content");
             matchParent.classList.remove('js__is-flipped');
             matchParent.classList.add('js__is-matched');
           });
@@ -280,7 +280,7 @@ var gamePlay = {
     } else {
 
       // remove class is-flipped from all.
-      var selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped');
+      const selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped');
 
       selectedCards.forEach(function(card) {
 
@@ -327,7 +327,7 @@ var gamePlay = {
   resetCards: function() {
 
     // remove class is-flipped from all.
-    var selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped, .js__is-matched');
+    const selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped, .js__is-matched');
 
     selectedCards.forEach(function(card) {
 

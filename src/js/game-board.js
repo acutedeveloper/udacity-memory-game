@@ -1,6 +1,6 @@
 /* Setup Game Board */
 
-var gameBoard = {
+const gameBoard = {
 
   settings: {
     gameGrid: '',
@@ -8,7 +8,7 @@ var gameBoard = {
     gameCardsFragment: '',
     shuffledNumbers: gameData.shuffleNumbers()
   },
-  
+
 
   // Initial function to call to setup the board
   init: function() {
@@ -34,7 +34,7 @@ var gameBoard = {
 
   buildBoard: function() {
 
-    for (var i = 0; i < 16; i++) {
+    for (let i = 0; i < 16; i++) {
 
       this.createCard(i);
 
@@ -44,29 +44,29 @@ var gameBoard = {
   },
 
   createCard: function(i) {
-    var gameCard = document.createElement('div');
+    const gameCard = document.createElement('div');
     gameCard.className = "game-card";
 
-    var gameCardId = document.createAttribute("data-cardid");
+    const gameCardId = document.createAttribute("data-cardid");
     gameCardId.value = i;
     gameCard.setAttributeNode(gameCardId);
 
-    var gameCardInner = document.createElement('div');
+    const gameCardInner = document.createElement('div');
     gameCardInner.className = "game-card__inner";
 
-    var gameCardContent = document.createElement('div');
+    const gameCardContent = document.createElement('div');
     gameCardContent.className = "game-card__content";
 
-    var gameCardContentFront = document.createElement('div');
+    const gameCardContentFront = document.createElement('div');
     gameCardContentFront.className = "game-card__content-front";
 
-    var gameCardContentBack = document.createElement('div');
+    const gameCardContentBack = document.createElement('div');
     gameCardContentBack.className = "game-card__content-back";
 
     // For Debugging Purposes ;)
     //gameCardContentBack.innerText = gameData.icons[this.settings.shuffledNumbers[i]];
 
-    var gameIcon = document.createElement('i');
+    const gameIcon = document.createElement('i');
     gameIcon.className = gameData.icons[this.settings.shuffledNumbers[i]];
 
     gameCardContentFront.appendChild(gameIcon);

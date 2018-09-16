@@ -3,7 +3,7 @@ Any data information required for game setup and gamePlay
 */
 
 // Game Data to help track different stats withing the game
-var gameData = {
+const gameData = {
   icons: [
     "icon-mic-outline",
     "icon-camera-alt",
@@ -67,7 +67,7 @@ var gameData = {
 
 }
 
-var moveCounter = {
+const moveCounter = {
 
   counterElement: "",
   moves: 0,

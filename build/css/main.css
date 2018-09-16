@@ -1,4 +1,8 @@
 @charset "UTF-8";
+/**
+ * @Component Name: Project Variable
+ * @Author: NM Peters
+ */
 /* General Colors */
 /* Theme Colors */
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
@@ -8,6 +12,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
 html {
   line-height: 1.15;
   /* 1 */
@@ -385,8 +390,13 @@ template {
   content: '\f24e'; }
 
 /* '' */
+/**
+ * @Component Name: Layout
+ * @Component Description: General Page Layout
+ * @Author: NM Peters
+ */
 body {
-  background-color: #EBE8E1;
+  background-color: #ebe8e1;
   font-family: arial; }
 
 .wrapper {
@@ -405,9 +415,14 @@ body {
   justify-content: space-between;
   height: 100%; }
 
+/**
+ * @Component Name: Game Header
+ * @Component Description: Game Header
+ * @Author: NM Peters
+ */
 .game-header {
   background-color: #232323;
-  color: #FFF;
+  color: #fff;
   padding: 10px;
   margin-bottom: 20px; }
   .game-header__inner {
@@ -423,7 +438,8 @@ body {
     max-width: 39em;
     margin: 0 auto; }
   .game-header__title {
-    font-size: 1em; }
+    font-size: 1em;
+    font-family: 'Pacifico', cursive; }
 
 /**
  * @Component Name: Game Grid
@@ -443,12 +459,18 @@ body {
     margin: 0 auto;
     margin-bottom: 20px; }
 
+/**
+ * @Component Name: Game Footer
+ * @Component Description:
+ * @Author: NM Peters
+ */
 .game-footer {
   text-align: center;
   border-top: 1px #232323 solid;
-  margin-top: auto; }
+  margin-top: auto;
+  font-family: 'Pacifico', cursive; }
   .game-footer i[class*='icon-'] {
-    color: #E76E66; }
+    color: #e76e66; }
 
 /**
  * @Component Name: Game Card
@@ -496,11 +518,11 @@ body {
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       border-radius: 5px;
-      color: #FFF; }
+      color: #fff; }
     .game-card__content-back {
       background-color: #232323; }
     .game-card__content-front {
-      background-color: #E76E66;
+      background-color: #e76e66;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -517,13 +539,18 @@ body {
       -webkit-transform: rotateY(180deg);
       transform: rotateY(180deg); }
     .game-card__content.js__is-matched .game-card__content-front {
-      background-color: #1B7D5A; }
+      background-color: #1b7d5a; }
   .game-card i[class*='icon-'] {
     font-size: 2rem;
-    color: #FFF; }
+    color: #fff; }
     .game-card i[class*='icon-']:before {
       vertical-align: middle; }
 
+/**
+ * @Component Name: Game Modal
+ * @Component Description: Modal Used for game messages
+ * @Author: NM Peters
+ */
 .game-modal {
   position: absolute;
   top: 0;
@@ -552,14 +579,24 @@ body {
     .game-modal__content-heading {
       margin-top: 0; }
 
+/**
+ * @Component Name: Game Button
+ * @Component Description: Generic Button used in project
+ * @Author: NM Peters
+ */
 .game-button {
-  background-color: #589AAA;
-  color: #FFF;
+  background-color: #589aaa;
+  color: #fff;
   padding: 10px;
   display: block;
   border-style: none;
   border-radius: 3px; }
 
+/**
+ * @Component Name: Game Move
+ * @Component Description: Block which counts game play moves taken
+ * @Author: NM Peters
+ */
 .game-moves {
   margin: 0 auto;
   margin-bottom: 30px;

@@ -1,6 +1,6 @@
 /* Handles user interactions */
 
-var gamePlay = {
+const gamePlay = {
 
   settings: {
     currentCard: '',
@@ -51,7 +51,7 @@ var gamePlay = {
     if (gameData.flippedCards.length === 2) {
 
       // Capture the value of THIS objects context
-      var self = this;
+      const self = this;
 
       window.setTimeout(function() {
         // inside here its a global context
@@ -59,10 +59,10 @@ var gamePlay = {
         // We can then run THIS checkCards
         if (self.checkCards()) {
 
-          var matchedCards = gameBoard.gameGrid.querySelectorAll(`.${self.settings.cardIcon}`);
+          const matchedCards = gameBoard.gameGrid.querySelectorAll(`.${self.settings.cardIcon}`);
 
           matchedCards.forEach(function(match) {
-            var matchParent = match.closest(".game-card__content");
+            const matchParent = match.closest(".game-card__content");
             matchParent.classList.remove('js__is-flipped');
             matchParent.classList.add('js__is-matched');
           });
@@ -93,7 +93,7 @@ var gamePlay = {
     } else {
 
       // remove class is-flipped from all.
-      var selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped');
+      const selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped');
 
       selectedCards.forEach(function(card) {
 
@@ -140,7 +140,7 @@ var gamePlay = {
   resetCards: function() {
 
     // remove class is-flipped from all.
-    var selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped, .js__is-matched');
+    const selectedCards = gameBoard.gameGrid.querySelectorAll('.js__is-flipped, .js__is-matched');
 
     selectedCards.forEach(function(card) {
 
