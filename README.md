@@ -32,6 +32,9 @@ Use gulp Babel
 
 ## Project Progress
 
+**17/9/18**
+Managed to resolve the tabs setting inside my IDE to clear some linting errors. I now need to find a way to clear the errors from variables are defined but used in different files. Perhaps something inside modules.
+
 **16/9/18**
 I have added in new tasks for linting the JS and copying all files to a build folder. JS has been broken up into separate modules which are then compiled into one file.
 
@@ -44,7 +47,7 @@ This then lead onto understanding more the use of `this`. As I understand `this`
 
 So you may think that you are referencing `this` inside of a object when using a builtin function, but rather it's referring to the Global Context.
 
-You can preseve the scoped context by using `let self = this;`.
+You can preserve the scoped context by using `let self = this;`.
 
 **12/9/18**
 Added checks to ensure that multiple clicks were not logged. And also fixed bug that allow users to match cards by double clicking on one card!

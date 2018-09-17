@@ -2,6 +2,10 @@ module.exports = {
     "env": {
         "browser": true
     },
+    "ecmaFeatures": {
+        "modules": true,
+        "module":  true
+    },
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": 6
@@ -17,7 +21,7 @@ module.exports = {
         ],
         "quotes": [
             "error",
-            "double"
+            "single"
         ],
         "semi": [
             "error",
