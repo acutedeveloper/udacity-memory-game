@@ -4,6 +4,11 @@ The idea is to use Javascript to build a version of the memory game.
 I have taken this opportunity to take on board some of the workflow lessons to create
 a modern workflow.
 
+Project is currently live at:
+[develop.nigelmpeters.co.uk](http://develop.nigelmpeters.co.uk/memory-game/build)
+
+Works well on mobile :P
+
 ## Project dependencies
 In building my workflow I have compiled a list of all the dependencies that are used in order to create a fast efficient and optimised workflow.
 
